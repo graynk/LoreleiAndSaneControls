@@ -1,5 +1,7 @@
 ﻿# Lorelei and the Sane Controls
 
+![Demo](https://graynk.space/lorelei.gif)
+
 This is a small mod that aims to somewhat improve the experience of navigating the numerous puzzles of The Letztes Jahr Hotel.
 
 More specifically, it makes it so that for simple (and most common) locks - padlocks, roman numeral locks, etc - the up 
