@@ -19,7 +19,7 @@ Download the zip archive from [Releases](https://github.com/graynk/LoreleiAndSan
 
 ## On Steam Deck
 
-The game uses [BepInEx](https://docs.bepinex.dev/index.html) to inject the custom code, which in turn [relies](https://docs.bepinex.dev/articles/advanced/proton_wine.html) on `winhttp.dll` proxy DLL.
+The mod uses [BepInEx](https://docs.bepinex.dev/index.html) to inject the custom code, which in turn [relies](https://docs.bepinex.dev/articles/advanced/proton_wine.html) on `winhttp.dll` proxy DLL.
 That means you have to do additional steps
 
 1. Switch to Desktop Mode
