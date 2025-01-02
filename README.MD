@@ -33,8 +33,9 @@ That means you have to do additional steps
 # How to build
 
 1. Install [.NET SDK](https://dotnet.microsoft.com/en-us/download)
-2. Clone this repo
-3. Create a `lib` directory in the project
-4. Copy `Assembly-CSharp.dll` from `path\to\game\Lorelei and the Laser Eyes_Data\Managed` to `lib`
-5. Run `dotnet build --configuration Release`
-6. Copy resulting DLL from `LoreleiAndSaneControls\bin\Release\net46\` to `path\to\game\BepInEx\plugins` 
+2. Possibly install [.NET Framework SDK](https://dotnet.microsoft.com/en-us/download/dotnet-framework) as well? Can't be bothered to check, as you likely have it installed anyway
+3. Clone this repo
+4. Create a `lib` directory in the project
+5. Copy `Assembly-CSharp.dll` from `path\to\game\Lorelei and the Laser Eyes_Data\Managed` to `lib`
+6. Run `dotnet build --configuration Release`
+7. Copy resulting DLL from `LoreleiAndSaneControls\bin\Release\net46\` to `path\to\game\BepInEx\plugins` 
