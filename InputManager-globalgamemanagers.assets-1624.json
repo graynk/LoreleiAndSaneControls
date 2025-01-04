@@ -1,0 +1,1927 @@
+{
+  "m_GameObject": {
+    "m_FileID": 0,
+    "m_PathID": 1439
+  },
+  "m_Enabled": 1,
+  "m_Script": {
+    "m_FileID": 0,
+    "m_PathID": 529
+  },
+  "m_Name": "",
+  "_dontDestroyOnLoad": 1,
+  "_userData": {
+    "configVars": {
+      "updateLoop": 1,
+      "alwaysUseUnityInput": 0,
+      "windowsStandalonePrimaryInputSource": 0,
+      "osx_primaryInputSource": 0,
+      "linux_primaryInputSource": 0,
+      "windowsUWP_primaryInputSource": 0,
+      "xboxOne_primaryInputSource": 0,
+      "gameCoreXboxOne_primaryInputSource": 0,
+      "gameCoreScarlett_primaryInputSource": 0,
+      "ps4_primaryInputSource": 0,
+      "ps5_primaryInputSource": 0,
+      "webGL_primaryInputSource": 0,
+      "stadia_primaryInputSource": 0,
+      "useXInput": 1,
+      "useNativeMouse": 1,
+      "useEnhancedDeviceSupport": 1,
+      "osxStandalone_useEnhancedDeviceSupport": 1,
+      "android_supportUnknownGamepads": 1,
+      "ps4_assignJoysticksByPS4JoyId": 1,
+      "useSteamControllerSupport": 1,
+      "logToScreen": 0,
+      "runInEditMode": 0,
+      "allowInputInEditorSceneView": 0,
+      "platformVars_windowsStandalone": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "useNativeKeyboard": 1,
+        "joystickRefreshRate": 240,
+        "useWindowsGamingInput": 0
+      },
+      "platformVars_linuxStandalone": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "useEnhancedDeviceSupport": 1
+      },
+      "platformVars_osxStandalone": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "useAppleGameController": 0,
+        "assignJoysticksByUserId": 0
+      },
+      "platformVars_windowsUWP": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "useGamepadAPI": 1,
+        "useHIDAPI": 1
+      },
+      "platformVars_iOS": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_tvOS": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_android": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_ps4": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_ps5": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "assignJoysticksByPS5JoyId": 1
+      },
+      "platformVars_psVita": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_xboxOne": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_gameCoreXboxOne": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "assignJoysticksByUserId": 0
+      },
+      "platformVars_gameCoreScarlett": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "assignJoysticksByUserId": 0
+      },
+      "platformVars_switch": {
+        "disableKeyboard": 1,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_webGL": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1
+      },
+      "platformVars_stadia": {
+        "disableKeyboard": 0,
+        "disableMouse": 1,
+        "ignoreInputWhenAppNotInFocus": 1,
+        "useNativeKeyboard": 1,
+        "useNativeMouse": 1
+      },
+      "maxJoysticksPerPlayer": 1,
+      "autoAssignJoysticks": 1,
+      "assignJoysticksToPlayingPlayersOnly": 0,
+      "distributeJoysticksEvenly": 1,
+      "reassignJoystickToPreviousOwnerOnReconnect": 1,
+      "defaultJoystickAxis2DDeadZoneType": 1,
+      "defaultJoystickAxis2DSensitivityType": 0,
+      "defaultAxisSensitivityType": 1,
+      "force4WayHats": 0,
+      "throttleCalibrationMode": 0,
+      "activateActionButtonsOnNegativeValue": 0,
+      "deferControllerConnectedEventsOnStart": 0,
+      "logLevel": 0,
+      "editorSettings": {
+        "exportConsts_useParentClass": 0,
+        "exportConsts_parentClassName": "RewiredConsts",
+        "exportConsts_useNamespace": 1,
+        "exportConsts_namespace": "RewiredConsts",
+        "exportConsts_actions": 1,
+        "exportConsts_actionsClassName": "Action",
+        "exportConsts_actionsIncludeActionCategory": 0,
+        "exportConsts_actionsCreateClassesForActionCategories": 0,
+        "exportConsts_mapCategories": 1,
+        "exportConsts_mapCategoriesClassName": "Category",
+        "exportConsts_layouts": 1,
+        "exportConsts_layoutsClassName": "Layout",
+        "exportConsts_players": 1,
+        "exportConsts_playersClassName": "Player",
+        "exportConsts_inputBehaviors": 0,
+        "exportConsts_inputBehaviorsClassName": "InputBehavior",
+        "exportConsts_customControllers": 1,
+        "exportConsts_customControllersClassName": "CustomController",
+        "exportConsts_customControllersAxesClassName": "Axis",
+        "exportConsts_customControllersButtonsClassName": "Button",
+        "exportConsts_layoutManagerRuleSets": 1,
+        "exportConsts_layoutManagerRuleSetsClassName": "LayoutManagerRuleSet",
+        "exportConsts_mapEnablerRuleSets": 1,
+        "exportConsts_mapEnablerRuleSetsClassName": "MapEnablerRuleSet",
+        "exportConsts_allCapsConstantNames": 0
+      }
+    },
+    "players": {
+      "Array": [
+        {
+          "_id": 9999999,
+          "_name": "System",
+          "_descriptiveName": "System",
+          "_startPlaying": 1,
+          "_defaultJoystickMaps": {
+            "Array": []
+          },
+          "_defaultMouseMaps": {
+            "Array": []
+          },
+          "_defaultKeyboardMaps": {
+            "Array": []
+          },
+          "_defaultCustomControllerMaps": {
+            "Array": []
+          },
+          "_startingCustomControllers": {
+            "Array": []
+          },
+          "_assignMouseOnStart": 1,
+          "_assignKeyboardOnStart": 1,
+          "_excludeFromControllerAutoAssignment": 1,
+          "_controllerMapLayoutManagerSettings": {
+            "_enabled": 1,
+            "_loadFromUserDataStore": 1,
+            "_ruleSets": {
+              "Array": []
+            }
+          },
+          "_controllerMapEnablerSettings": {
+            "_enabled": 1,
+            "_ruleSets": {
+              "Array": []
+            }
+          }
+        },
+        {
+          "_id": 1,
+          "_name": "Player0",
+          "_descriptiveName": "Player0",
+          "_startPlaying": 1,
+          "_defaultJoystickMaps": {
+            "Array": [
+              {
+                "_enabled": 1,
+                "_categoryId": 0,
+                "_layoutId": 0
+              }
+            ]
+          },
+          "_defaultMouseMaps": {
+            "Array": [
+              {
+                "_enabled": 1,
+                "_categoryId": 0,
+                "_layoutId": 0
+              }
+            ]
+          },
+          "_defaultKeyboardMaps": {
+            "Array": [
+              {
+                "_enabled": 1,
+                "_categoryId": 0,
+                "_layoutId": 0
+              }
+            ]
+          },
+          "_defaultCustomControllerMaps": {
+            "Array": []
+          },
+          "_startingCustomControllers": {
+            "Array": []
+          },
+          "_assignMouseOnStart": 1,
+          "_assignKeyboardOnStart": 1,
+          "_excludeFromControllerAutoAssignment": 0,
+          "_controllerMapLayoutManagerSettings": {
+            "_enabled": 1,
+            "_loadFromUserDataStore": 1,
+            "_ruleSets": {
+              "Array": []
+            }
+          },
+          "_controllerMapEnablerSettings": {
+            "_enabled": 1,
+            "_ruleSets": {
+              "Array": []
+            }
+          }
+        }
+      ]
+    },
+    "actions": {
+      "Array": [
+        {
+          "_id": 0,
+          "_name": "HInput_MOVE",
+          "_type": 0,
+          "_descriptiveName": "HInput_MOVE",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 1,
+          "_name": "VInput_MOVE",
+          "_type": 0,
+          "_descriptiveName": "VInput_MOVE",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 15,
+          "_name": "Quit",
+          "_type": 1,
+          "_descriptiveName": "Quit",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 24,
+          "_name": "Interact",
+          "_type": 1,
+          "_descriptiveName": "Interact",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 48,
+          "_name": "Shoot",
+          "_type": 1,
+          "_descriptiveName": "Shoot",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 59,
+          "_name": "Debug_ResetSave",
+          "_type": 1,
+          "_descriptiveName": "Debug_ResetSave",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 84,
+          "_name": "Debug_Menu",
+          "_type": 1,
+          "_descriptiveName": "Debug_Menu",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 81,
+          "_name": "Debug_LaserEyes",
+          "_type": 1,
+          "_descriptiveName": "Debug_LaserEyes",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 89,
+          "_name": "Debug_MazeMan",
+          "_type": 1,
+          "_descriptiveName": "Debug_MazeMan",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 90,
+          "_name": "Debug_BoltPuzzles",
+          "_type": 1,
+          "_descriptiveName": "Debug_BoltPuzzles",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 82,
+          "_name": "Debug_PuzzleSolve",
+          "_type": 1,
+          "_descriptiveName": "Debug_PuzzleSolve",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 88,
+          "_name": "Debug_AutoSkip",
+          "_type": 1,
+          "_descriptiveName": "Debug_AutoSkip",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 92,
+          "_name": "HiddenInfo_Primary",
+          "_type": 1,
+          "_descriptiveName": "HiddenInfo_Primary",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 94,
+          "_name": "HiddenInfo_Secondary",
+          "_type": 1,
+          "_descriptiveName": "HiddenInfo_Secondary",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 74,
+          "_name": "Dialog_Left",
+          "_type": 1,
+          "_descriptiveName": "Dialog_Left",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 75,
+          "_name": "Dialog_Right",
+          "_type": 1,
+          "_descriptiveName": "Dialog_Right",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 76,
+          "_name": "Dialog_Up",
+          "_type": 1,
+          "_descriptiveName": "Dialog_Up",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 77,
+          "_name": "Dialog_Down",
+          "_type": 1,
+          "_descriptiveName": "Dialog_Down",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 78,
+          "_name": "Dialog_Confirm",
+          "_type": 1,
+          "_descriptiveName": "Dialog_Confirm",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 85,
+          "_name": "Menu",
+          "_type": 1,
+          "_descriptiveName": "Menu",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 86,
+          "_name": "HInput_D_MOVE",
+          "_type": 0,
+          "_descriptiveName": "HInput_D_MOVE",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 87,
+          "_name": "VInput_D_MOVE",
+          "_type": 0,
+          "_descriptiveName": "VInput_D_MOVE",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 91,
+          "_name": "Dummy",
+          "_type": 1,
+          "_descriptiveName": "Dummy",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 95,
+          "_name": "Map",
+          "_type": 1,
+          "_descriptiveName": "Map",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 96,
+          "_name": "Back",
+          "_type": 1,
+          "_descriptiveName": "Back",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        }
+      ]
+    },
+    "actionCategories": {
+      "Array": [
+        {
+          "_name": "Default",
+          "_descriptiveName": "Default",
+          "_tag": "",
+          "_id": 0,
+          "_userAssignable": 1
+        }
+      ]
+    },
+    "actionCategoryMap": {
+      "list": {
+        "Array": [
+          {
+            "categoryId": 0,
+            "actionIds": {
+              "Array": [
+                0,
+                1,
+                24,
+                48,
+                76,
+                77,
+                74,
+                75,
+                78,
+                15,
+                85,
+                59,
+                84,
+                81,
+                89,
+                90,
+                82,
+                88,
+                92,
+                94,
+                86,
+                87,
+                91,
+                95,
+                96
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "inputBehaviors": {
+      "Array": [
+        {
+          "_id": 0,
+          "_name": "Default",
+          "_joystickAxisSensitivity": 1.0,
+          "_digitalAxisSimulation": 1,
+          "_digitalAxisSnap": 1,
+          "_digitalAxisInstantReverse": 1,
+          "_digitalAxisGravity": 100.0,
+          "_digitalAxisSensitivity": 100.0,
+          "_mouseXYAxisMode": 0,
+          "_mouseOtherAxisMode": 0,
+          "_mouseXYAxisSensitivity": 2.0,
+          "_mouseXYAxisDeltaCalc": 0,
+          "_mouseOtherAxisSensitivity": 1.0,
+          "_customControllerAxisSensitivity": 1.0,
+          "_buttonDoublePressSpeed": 0.3,
+          "_buttonShortPressTime": 0.25,
+          "_buttonShortPressExpiresIn": 0.0,
+          "_buttonLongPressTime": 1.0,
+          "_buttonLongPressExpiresIn": 0.0,
+          "_buttonDeadZone": 0.5,
+          "_buttonDownBuffer": 0.0,
+          "_buttonRepeatRate": 30.0,
+          "_buttonRepeatDelay": 0.0
+        }
+      ]
+    },
+    "mapCategories": {
+      "Array": [
+        {
+          "_name": "Default",
+          "_descriptiveName": "Default",
+          "_tag": "",
+          "_id": 0,
+          "_userAssignable": 1,
+          "_checkConflictsWithAllCategories": 1,
+          "_checkConflictsCategoryIds": {
+            "Array": []
+          }
+        }
+      ]
+    },
+    "joystickLayouts": {
+      "Array": [
+        {
+          "_name": "Default",
+          "_descriptiveName": "Default",
+          "_id": 0
+        }
+      ]
+    },
+    "keyboardLayouts": {
+      "Array": [
+        {
+          "_name": "Default",
+          "_descriptiveName": "Default",
+          "_id": 0
+        }
+      ]
+    },
+    "mouseLayouts": {
+      "Array": [
+        {
+          "_name": "Default",
+          "_descriptiveName": "Default",
+          "_id": 0
+        }
+      ]
+    },
+    "customControllerLayouts": {
+      "Array": [
+        {
+          "_name": "Default",
+          "_descriptiveName": "Default",
+          "_id": 0
+        }
+      ]
+    },
+    "joystickMaps": {
+      "Array": [
+        {
+          "id": 13,
+          "categoryId": 0,
+          "layoutId": 0,
+          "name": "",
+          "hardwareGuidString": "83b427e4-086f-47f3-bb06-be266abd1ca5",
+          "customControllerUid": 0,
+          "actionElementMaps": {
+            "Array": [
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 0,
+                "_elementIdentifierId": 0,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 0,
+                "_elementIdentifierId": 1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 0,
+                "_elementIdentifierId": 2,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 0,
+                "_elementIdentifierId": 3,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 1,
+                "_elementIdentifierId": 19,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 87,
+                "_elementType": 1,
+                "_elementIdentifierId": 19,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 1,
+                "_elementIdentifierId": 21,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 87,
+                "_elementType": 1,
+                "_elementIdentifierId": 21,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 1,
+                "_elementIdentifierId": 22,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 86,
+                "_elementType": 1,
+                "_elementIdentifierId": 22,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 1,
+                "_elementIdentifierId": 20,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 86,
+                "_elementType": 1,
+                "_elementIdentifierId": 20,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": 4,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 96,
+                "_elementType": 1,
+                "_elementIdentifierId": 5,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": 7,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": 8,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": 10,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": 11,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": 12,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": 13,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": 4,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 95,
+                "_elementType": 1,
+                "_elementIdentifierId": 14,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": 7,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": 8,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": 10,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": 11,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": 12,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": 13,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 76,
+                "_elementType": 0,
+                "_elementIdentifierId": 1,
+                "_axisRange": 1,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 77,
+                "_elementType": 0,
+                "_elementIdentifierId": 1,
+                "_axisRange": 2,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 74,
+                "_elementType": 0,
+                "_elementIdentifierId": 0,
+                "_axisRange": 2,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 75,
+                "_elementType": 0,
+                "_elementIdentifierId": 0,
+                "_axisRange": 1,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 76,
+                "_elementType": 0,
+                "_elementIdentifierId": 3,
+                "_axisRange": 1,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 77,
+                "_elementType": 0,
+                "_elementIdentifierId": 3,
+                "_axisRange": 2,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 74,
+                "_elementType": 0,
+                "_elementIdentifierId": 2,
+                "_axisRange": 2,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 75,
+                "_elementType": 0,
+                "_elementIdentifierId": 2,
+                "_axisRange": 1,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 76,
+                "_elementType": 1,
+                "_elementIdentifierId": 19,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 77,
+                "_elementType": 1,
+                "_elementIdentifierId": 21,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 74,
+                "_elementType": 1,
+                "_elementIdentifierId": 22,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 75,
+                "_elementType": 1,
+                "_elementIdentifierId": 20,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 85,
+                "_elementType": 1,
+                "_elementIdentifierId": 15,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 84,
+                "_elementType": 1,
+                "_elementIdentifierId": 18,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 82,
+                "_elementType": 1,
+                "_elementIdentifierId": 17,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 88,
+                "_elementType": 1,
+                "_elementIdentifierId": 17,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 92,
+                "_elementType": 1,
+                "_elementIdentifierId": 17,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 94,
+                "_elementType": 1,
+                "_elementIdentifierId": 18,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "keyboardMaps": {
+      "Array": [
+        {
+          "id": 0,
+          "categoryId": 0,
+          "layoutId": 0,
+          "name": "",
+          "hardwareGuidString": "",
+          "customControllerUid": 0,
+          "actionElementMaps": {
+            "Array": [
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 273,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 87,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 273,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 274,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 87,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 274,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 276,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 86,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 276,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 275,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 86,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 275,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 119,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 87,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 119,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 97,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 86,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 97,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 1,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 115,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 87,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 1,
+                "_keyboardKeyCode": 115,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 0,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 100,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 86,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 100,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 32,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 24,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 13,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 48,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 32,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 48,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 13,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 32,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 78,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 13,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 76,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 273,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 74,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 276,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 75,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 275,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 77,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 274,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 76,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 119,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 74,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 97,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 77,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 115,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 75,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 100,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 85,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 27,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 59,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 279,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 81,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 108,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 89,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 109,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 90,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 98,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 91,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 13,
+                "_modifierKey1": 2,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 92,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 280,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 94,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 281,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 95,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 109,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 96,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 8,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "mouseMaps": {
+      "Array": [
+        {
+          "id": 3,
+          "categoryId": 0,
+          "layoutId": 0,
+          "name": "",
+          "hardwareGuidString": "",
+          "customControllerUid": 0,
+          "actionElementMaps": {
+            "Array": [
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 23,
+                "_elementType": 1,
+                "_elementIdentifierId": 3,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 52,
+                "_elementType": 1,
+                "_elementIdentifierId": 4,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 53,
+                "_elementType": 0,
+                "_elementIdentifierId": 0,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 54,
+                "_elementType": 0,
+                "_elementIdentifierId": 1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "customControllerMaps": {
+      "Array": []
+    },
+    "customControllers": {
+      "Array": []
+    },
+    "controllerMapLayoutManagerRuleSets": {
+      "Array": []
+    },
+    "controllerMapEnablerRuleSets": {
+      "Array": []
+    },
+    "playerIdCounter": 2,
+    "actionIdCounter": 95,
+    "actionCategoryIdCounter": 1,
+    "inputBehaviorIdCounter": 1,
+    "mapCategoryIdCounter": 2,
+    "joystickLayoutIdCounter": 2,
+    "keyboardLayoutIdCounter": 1,
+    "mouseLayoutIdCounter": 1,
+    "customControllerLayoutIdCounter": 1,
+    "joystickMapIdCounter": 18,
+    "keyboardMapIdCounter": 1,
+    "mouseMapIdCounter": 4,
+    "customControllerMapIdCounter": 0,
+    "customControllerIdCounter": 3,
+    "controllerMapLayoutManagerSetIdCounter": 0,
+    "controllerMapEnablerSetIdCounter": 0
+  },
+  "_controllerDataFiles": {
+    "m_FileID": 0,
+    "m_PathID": 1444
+  }
+}
