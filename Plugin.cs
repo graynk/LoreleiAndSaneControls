@@ -66,7 +66,6 @@ public class Plugin : BaseUnityPlugin
         var found = 0;
         foreach (var interact in allInteractsInGame)
         {
-            
             // also pfMazeposter01 and pfPixel_Forest_Sign01
             switch (interact.name)
             {
@@ -99,7 +98,8 @@ public class Plugin : BaseUnityPlugin
     {
         var index = -1;
 
-        for (var i = 0; i < Maptubes.Length; i++) {
+        for (var i = 0; i < Maptubes.Length; i++)
+        {
             if (Maptubes[i]?.name == currentFloor)
             {
                 index = i;
@@ -126,7 +126,7 @@ public class Plugin : BaseUnityPlugin
             return true;
         }
 
-        if (!isMapOpen && ___m_nActiveDialog != -1)
+        if ((!isMapOpen && ___m_nActiveDialog != -1) || SGFW.GameLogic.LevelLogic.IsPuzzleViewActive() || SGFW.GameLogic.LevelLogic.IsPuzzleViewPending())
         {
             return true;
         }
@@ -177,7 +177,7 @@ public class Plugin : BaseUnityPlugin
     [HarmonyPatch(typeof(KeyCabinetPadLock), ConfirmMethodName)]
     [HarmonyPatch(typeof(LetterLockLogic), ConfirmMethodName)]
     [HarmonyPatch(typeof(RomanPadLockLogic), ConfirmMethodName)]
-    // [HarmonyPatch(typeof(MapTubeLogic), ConfirmMethodName)]
+    [HarmonyPatch(typeof(MapTubeLogic), ConfirmMethodName)]
     [HarmonyPrefix]
     private static bool AlwaysPushConfirmButton(ref ConfirmButtonDuplicate ___m_hConfirmButton)
     {
@@ -189,10 +189,11 @@ public class Plugin : BaseUnityPlugin
     [HarmonyPatch(typeof(KeyCabinetPadLock), InputMethodName)]
     [HarmonyPatch(typeof(LetterLockLogic), InputMethodName)]
     [HarmonyPatch(typeof(RomanPadLockLogic), InputMethodName)]
-    // [HarmonyPatch(typeof(MapTubeLogic), InputMethodName)]
     [HarmonyPrefix]
     private static bool TreatVerticalDirectionAsInput(
-        ref PadLockLogic __instance,
+        ref ReactPreset ___wheelSpinPreset,
+        ref GameObject ___leftSideShakeParent,
+        ref GameObject ___rightSideShakeParent,
         ref bool ___m_bSnapWheelRotation,
         ref int ___m_nLastLeftShakeIndex,
         ref int ___m_nLastRightShakeIndex,
@@ -204,17 +205,109 @@ public class Plugin : BaseUnityPlugin
         SelectableObject hSelection = null
     )
     {
-        if (nInput is not (SGMenuNavigator.INPUTDIR.UP or SGMenuNavigator.INPUTDIR.DOWN)) return true;
-
-        var rotationPreset = __instance.wheelSpinPreset;
-        if (rotationPreset == null) return false;
-
-        // If the input is DOWN - invert the rotation animation
-        if (nInput is SGMenuNavigator.INPUTDIR.DOWN)
+        var letOriginalRun = HandleWheelRotation(
+            ___wheelSpinPreset,
+            ref ___m_bSnapWheelRotation,
+            ___m_hWheelButtons,
+            ___m_hReactHandler,
+            nInput,
+            SGMenuNavigator.INPUTDIR.UP,
+            SGMenuNavigator.INPUTDIR.DOWN,
+            out int selectedButtonIndex,
+            hSelection);
+        if (letOriginalRun)
         {
-            rotationPreset = Instantiate(rotationPreset);
-            // The animation seems to be pretty simplistic - just 3 keyframes on X axis: 0, 0.67, 1
-            var rotation = rotationPreset.hReactEvents[0].hReact.rotationX;
+            return true;
+        }
+
+        // Some weird shaking code from the original function
+        if (selectedButtonIndex < ___m_hWheelButtons.Count / 2)
+            RequestPadLockShake(___m_hReactHandler, ___leftSideShakeParent, ___m_hLeftShakePresets,
+                ref ___m_nLastLeftShakeIndex);
+        else
+            RequestPadLockShake(___m_hReactHandler, ___rightSideShakeParent, ___m_hRightShakePresets,
+                ref ___m_nLastRightShakeIndex);
+
+        return false;
+    }
+
+    [HarmonyPatch(typeof(MapTubeLogic), InputMethodName)]
+    [HarmonyPrefix]
+    private static bool TreatHorizontalDirectionAsInput(
+        ref ReactPreset ___wheelSpinPreset,
+        ref bool ___m_bSnapWheelRotation,
+        ref List<WheelButton> ___m_hWheelButtons,
+        ref ReactHandler ___m_hReactHandler,
+        SGMenuNavigator.INPUTDIR nInput,
+        SelectableObject hSelection = null
+    )
+    {
+        return HandleWheelRotation(
+            ___wheelSpinPreset,
+            ref ___m_bSnapWheelRotation,
+            ___m_hWheelButtons,
+            ___m_hReactHandler,
+            nInput,
+            SGMenuNavigator.INPUTDIR.LEFT,
+            SGMenuNavigator.INPUTDIR.RIGHT,
+            out _,
+            hSelection);
+    }
+
+    private static bool HandleWheelRotation(
+        ReactPreset rotationPreset,
+        ref bool ___m_bSnapWheelRotation,
+        List<WheelButton> ___m_hWheelButtons,
+        ReactHandler ___m_hReactHandler,
+        SGMenuNavigator.INPUTDIR nInput,
+        SGMenuNavigator.INPUTDIR incDirection,
+        SGMenuNavigator.INPUTDIR decDirection,
+        out int selectedButtonIndex,
+        SelectableObject hSelection = null
+    )
+    {
+        if (nInput != incDirection && nInput != decDirection)
+        {
+            selectedButtonIndex = -1;
+            return true;
+        }
+
+        if (rotationPreset == null)
+        {
+            selectedButtonIndex = -1;
+            return true;
+        }
+
+        // If the input counts down - invert the rotation animation
+        if (nInput == decDirection)
+        {
+            rotationPreset = InvertRotationPreset(rotationPreset);
+        }
+
+        selectedButtonIndex =
+            ___m_hWheelButtons.FindIndex(wheelButton => wheelButton.hSelectableObject == hSelection);
+        var selectedButton = ___m_hWheelButtons[selectedButtonIndex];
+        if (!___m_hReactHandler.IsEventsFinished(selectedButton.hGameObject))
+        {
+            return true;
+        }
+
+        // If the input counts up or down and all previous events have finished - rotate the wheel
+        ___m_bSnapWheelRotation = true;
+        ___m_hReactHandler.RequestEvents(selectedButton.hGameObject, rotationPreset, 0.0f, false, false);
+        return false;
+    }
+
+    private static ReactPreset InvertRotationPreset(ReactPreset rotationPreset)
+    {
+        rotationPreset = Instantiate(rotationPreset);
+        var reactEvent = rotationPreset.hReactEvents[0].hReact;
+        AnimationCurve[] rotations = new[] { reactEvent.rotationX, reactEvent.rotationY, reactEvent.rotationZ };
+        // The animation seems to be pretty simplistic - just 3 keyframes on 1 axis: 0, 0.67, 1
+        foreach (var rotation in rotations)
+        {
+            if (rotation.keys.Length == 0) continue;
+
             var originalKeys = rotation.keys;
             var invertedKeys = new Keyframe[originalKeys.Length];
 
@@ -224,24 +317,7 @@ public class Plugin : BaseUnityPlugin
             rotation.SetKeys(invertedKeys);
         }
 
-        var selectedButtonIndex =
-            ___m_hWheelButtons.FindIndex(wheelButton => wheelButton.hSelectableObject == hSelection);
-        var selectedButton = ___m_hWheelButtons[selectedButtonIndex];
-        if (!___m_hReactHandler.IsEventsFinished(selectedButton.hGameObject)) return false;
-
-        // If the input is UP or DOWN and all previous events have finished - rotate the wheel
-        ___m_bSnapWheelRotation = true;
-        ___m_hReactHandler.RequestEvents(selectedButton.hGameObject, rotationPreset, 0.0f, false, false);
-
-        // Some weird shaking code from the original function
-        if (selectedButtonIndex < ___m_hWheelButtons.Count / 2)
-            RequestPadLockShake(___m_hReactHandler, __instance.leftSideShakeParent, ___m_hLeftShakePresets,
-                ref ___m_nLastLeftShakeIndex);
-        else
-            RequestPadLockShake(___m_hReactHandler, __instance.rightSideShakeParent, ___m_hRightShakePresets,
-                ref ___m_nLastRightShakeIndex);
-
-        return false;
+        return rotationPreset;
     }
 
     // A copy-paste from PadLockLogic to avoid Traverse-related shenanigans (which don't work well with ref arguments)
