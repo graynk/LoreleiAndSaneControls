@@ -541,6 +541,28 @@
           "_behaviorId": 0,
           "_userAssignable": 1,
           "_categoryId": 0
+        },
+        {
+          "_id": 97,
+          "_name": "Prev",
+          "_type": 1,
+          "_descriptiveName": "Prev",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
+        },
+        {
+          "_id": 98,
+          "_name": "Next",
+          "_type": 1,
+          "_descriptiveName": "Next",
+          "_positiveDescriptiveName": "",
+          "_negativeDescriptiveName": "",
+          "_behaviorId": 0,
+          "_userAssignable": 1,
+          "_categoryId": 0
         }
       ]
     },
@@ -586,7 +608,9 @@
                 87,
                 91,
                 95,
-                96
+                96,
+                97,
+                98
               ]
             }
           }
@@ -855,7 +879,7 @@
               },
               {
                 "_actionCategoryId": 0,
-                "_actionId": 96,
+                "_actionId": 24,
                 "_elementType": 1,
                 "_elementIdentifierId": 5,
                 "_axisRange": 0,
@@ -959,9 +983,9 @@
               },
               {
                 "_actionCategoryId": 0,
-                "_actionId": 95,
+                "_actionId": 78,
                 "_elementType": 1,
-                "_elementIdentifierId": 14,
+                "_elementIdentifierId": 5,
                 "_axisRange": 0,
                 "_invert": 0,
                 "_axisContribution": 0,
@@ -1206,6 +1230,32 @@
               },
               {
                 "_actionCategoryId": 0,
+                "_actionId": 59,
+                "_elementType": 1,
+                "_elementIdentifierId": 14,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 85,
+                "_elementType": 1,
+                "_elementIdentifierId": 14,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
                 "_actionId": 85,
                 "_elementType": 1,
                 "_elementIdentifierId": 15,
@@ -1274,6 +1324,58 @@
                 "_actionId": 94,
                 "_elementType": 1,
                 "_elementIdentifierId": 18,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 95,
+                "_elementType": 1,
+                "_elementIdentifierId": 14,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 96,
+                "_elementType": 1,
+                "_elementIdentifierId": 5,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 97,
+                "_elementType": 1,
+                "_elementIdentifierId": 10,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 0,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 98,
+                "_elementType": 1,
+                "_elementIdentifierId": 11,
                 "_axisRange": 0,
                 "_invert": 0,
                 "_axisContribution": 0,
@@ -1814,6 +1916,32 @@
                 "_invert": 0,
                 "_axisContribution": 0,
                 "_keyboardKeyCode": 8,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 97,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 113,
+                "_modifierKey1": 0,
+                "_modifierKey2": 0,
+                "_modifierKey3": 0
+              },
+              {
+                "_actionCategoryId": 0,
+                "_actionId": 98,
+                "_elementType": 1,
+                "_elementIdentifierId": -1,
+                "_axisRange": 0,
+                "_invert": 0,
+                "_axisContribution": 0,
+                "_keyboardKeyCode": 101,
                 "_modifierKey1": 0,
                 "_modifierKey2": 0,
                 "_modifierKey3": 0
