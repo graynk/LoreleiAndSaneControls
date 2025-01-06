@@ -38,8 +38,6 @@ public class Plugin : BaseUnityPlugin
 
         ButtonPressed[Action.Map] = gameInput.GetButtonDown("Map");
         ButtonPressed[Action.Back] = gameInput.GetButtonDown("Back");
-        ButtonPressed[Action.Up] = gameInput.GetButtonDown("Dialog_Up");
-        ButtonPressed[Action.Down] = gameInput.GetButtonDown("Dialog_Down");
         ButtonPressed[Action.Prev] = gameInput.GetButtonDown("Prev");
         ButtonPressed[Action.Next] = gameInput.GetButtonDown("Next");
         ButtonPressed[Action.Interact] = gameInput.GetButtonDown("Interact");
@@ -47,6 +45,7 @@ public class Plugin : BaseUnityPlugin
         return true;
     }
 
+    // Goes through EVERY interact object to find Map tubes (which normally are somewhere in the level on each floor)
     [HarmonyPatch(typeof(Lorelei), "Init")]
     [HarmonyPostfix]
     private static void StealMaptubesRefsIfAbsent()
@@ -114,6 +113,7 @@ public class Plugin : BaseUnityPlugin
     }
 
 
+    // Deals with map opening / switching floors on a map
     [HarmonyPatch(typeof(InteractHandler), "OnUpdate")]
     [HarmonyPrefix]
     private static bool HandleCustomInputInUpdateLoop(ref int ___m_nActiveDialog)
@@ -172,7 +172,19 @@ public class Plugin : BaseUnityPlugin
         _currentFloorMapName = requestedFloorMap.name;
         return false;
     }
+    
+    // This just makes OnUpdate for every puzzle return true, which in Lorelei terms means "close that, we're done"
+    [HarmonyPatch(typeof(PuzzleView), "OnUpdate")]
+    [HarmonyPostfix]
+    private static void BackOutOfAPuzzle(ref bool __result)
+    {
+        if (ButtonPressed[Action.Back])
+        {
+            __result = true;
+        }
+    }
 
+    // For padlocks converts what would normally be an "interact" action (e.g. on a dial) to a "check solution" action
     [HarmonyPatch(typeof(PadLockLogic), ConfirmMethodName)]
     [HarmonyPatch(typeof(KeyCabinetPadLock), ConfirmMethodName)]
     [HarmonyPatch(typeof(LetterLockLogic), ConfirmMethodName)]
@@ -185,6 +197,7 @@ public class Plugin : BaseUnityPlugin
         return true;
     }
 
+    // For padlocks turn UP/DOWN actions into "rotate the dial" action
     [HarmonyPatch(typeof(PadLockLogic), InputMethodName)]
     [HarmonyPatch(typeof(KeyCabinetPadLock), InputMethodName)]
     [HarmonyPatch(typeof(LetterLockLogic), InputMethodName)]
@@ -231,6 +244,7 @@ public class Plugin : BaseUnityPlugin
         return false;
     }
 
+    // For map tubes (and later maybe other locks) convert LEFT/RIGHT action into "rotate the dial" action
     [HarmonyPatch(typeof(MapTubeLogic), InputMethodName)]
     [HarmonyPrefix]
     private static bool TreatHorizontalDirectionAsInput(
@@ -254,6 +268,7 @@ public class Plugin : BaseUnityPlugin
             hSelection);
     }
 
+    // Generalized function to rotate a wheel dial in a puzzle. Inverts the direction if necessary
     private static bool HandleWheelRotation(
         ReactPreset rotationPreset,
         ref bool ___m_bSnapWheelRotation,
@@ -297,12 +312,13 @@ public class Plugin : BaseUnityPlugin
         ___m_hReactHandler.RequestEvents(selectedButton.hGameObject, rotationPreset, 0.0f, false, false);
         return false;
     }
-
+    
+    // Checks which axis have animation keys and inverts them
     private static ReactPreset InvertRotationPreset(ReactPreset rotationPreset)
     {
         rotationPreset = Instantiate(rotationPreset);
         var reactEvent = rotationPreset.hReactEvents[0].hReact;
-        AnimationCurve[] rotations = new[] { reactEvent.rotationX, reactEvent.rotationY, reactEvent.rotationZ };
+        AnimationCurve[] rotations = [reactEvent.rotationX, reactEvent.rotationY, reactEvent.rotationZ];
         // The animation seems to be pretty simplistic - just 3 keyframes on 1 axis: 0, 0.67, 1
         foreach (var rotation in rotations)
         {
@@ -357,8 +373,6 @@ public class Plugin : BaseUnityPlugin
 
     private enum Action
     {
-        Up,
-        Down,
         Prev,
         Next,
         Map,
