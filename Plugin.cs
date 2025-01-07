@@ -113,11 +113,18 @@ public class Plugin : BaseUnityPlugin
     }
 
 
-    // Deals with map opening / switching floors on a map
+    // Deals with map opening / switching floors on a map. Also closes the inventory
     [HarmonyPatch(typeof(InteractHandler), "OnUpdate")]
     [HarmonyPrefix]
-    private static bool HandleCustomInputInUpdateLoop()
+    private static bool HandleCustomInputInUpdateLoop(ref bool bInteractButton)
     {
+        var activeDialog = InteractHandler.Instance.GetActiveDialog();
+        // Closes the inventory. This _also_ makes IsExitItemSelected return true.
+        if (ButtonPressed[Action.Back] && activeDialog != null && activeDialog.sDesc.Contains("Inventory"))
+        {
+            bInteractButton = true;
+            return true;
+        }
         var isMapOpen = _currentFloorMapName != "";
         // Map was closed
         if (isMapOpen && ButtonPressed[Action.Interact])
@@ -183,6 +190,20 @@ public class Plugin : BaseUnityPlugin
         {
             __result = true;
         }
+    }
+    
+    // Closes inventory on "Back" action
+    [HarmonyPatch(typeof(UIElement_Inventory), "IsExitItemSelected")]
+    [HarmonyPrefix]
+    private static bool BackOutOfABag(ref bool __result)
+    {
+        if (ButtonPressed[Action.Back])
+        {
+            __result = true;
+            return false;
+        }
+
+        return true;
     }
 
     // For padlocks converts what would normally be an "interact" action (e.g. on a dial) to a "check solution" action
