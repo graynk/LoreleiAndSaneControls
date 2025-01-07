@@ -120,7 +120,7 @@ public class Plugin : BaseUnityPlugin
     {
         var activeDialog = InteractHandler.Instance.GetActiveDialog();
         // Closes the inventory. This _also_ makes IsExitItemSelected return true and GetSelectedItem return exit item.
-        if (ButtonPressed[Action.Back] && activeDialog != null && activeDialog.sDesc.Contains("Inventory"))
+        if (ButtonPressed[Action.Back] && activeDialog != null && (activeDialog.sDesc.Contains("Inventory") || activeDialog.sDesc.Contains("Map")))
         {
             bInteractButton = true;
             return true;

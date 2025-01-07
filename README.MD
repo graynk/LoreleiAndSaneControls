@@ -11,6 +11,7 @@ and down button rotate the dials, and the "interact" button confirms the decisio
 3. It adds a new "Map" button (`Select` on controllers and `M` on keyboard), which shows a map of the current floor (provided you have unlocked it in-game). Use `LB/RB` or `Q/E` to switch between floors. The shortcut only works inside the mansion if you're in one of the rooms on the map.
 
 I didn't touch some of the more difficult locks (like the Red Maze Door), but most of my own grips with the controls are solved now.
+The Back button also affects puzzles/inventory/map screens only, to preserve some of the original intent of clunky menu-ing.
 
 # Mapping
 
