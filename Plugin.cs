@@ -93,7 +93,7 @@ public class Plugin : BaseUnityPlugin
         }
     }
 
-    private static Interact GetAdjacentFloor(string currentFloor, int offset)
+    private static Interact GetRequestedFloorMapInteract(string currentFloor, int offset)
     {
         var index = -1;
 
@@ -169,10 +169,18 @@ public class Plugin : BaseUnityPlugin
             offset = -1;
         else if (nextButtonPressed) offset = 1;
 
-        Interact requestedFloorMap = GetAdjacentFloor(currentFloor, offset);
+        Interact requestedFloorMap = GetRequestedFloorMapInteract(currentFloor, offset);
         if (requestedFloorMap == null)
         {
             _logger.LogInfo($"offset {offset} from {currentFloor} not found");
+            return true;
+        }
+
+        
+        var mapDialog = requestedFloorMap.hDialogs.Find(dialog => dialog.sDesc == "ViewMap");
+        if (mapDialog == null || !mapDialog.IsRequiredFulfilled(InteractHandler.Instance))
+        {
+            _logger.LogInfo($"The map tube {requestedFloorMap.name} has not been solved yet");
             return true;
         }
 
@@ -213,6 +221,7 @@ public class Plugin : BaseUnityPlugin
     {
         if (ButtonPressed[Action.Back])
         {
+            // I hope the index for the exit item never stops being zero, because I can't be bothered to search for it through reflection
             __result = InteractHandler.Instance.GetItemByIndex(0);
             return false;
         }
