@@ -119,7 +119,7 @@ public class Plugin : BaseUnityPlugin
     private static bool HandleCustomInputInUpdateLoop(ref bool bInteractButton)
     {
         var activeDialog = InteractHandler.Instance.GetActiveDialog();
-        // Closes the inventory. This _also_ makes IsExitItemSelected return true.
+        // Closes the inventory. This _also_ makes IsExitItemSelected return true and GetSelectedItem return exit item.
         if (ButtonPressed[Action.Back] && activeDialog != null && activeDialog.sDesc.Contains("Inventory"))
         {
             bInteractButton = true;
@@ -192,14 +192,28 @@ public class Plugin : BaseUnityPlugin
         }
     }
     
-    // Closes inventory on "Back" action
+    // Closes inventory on "Back" action when Inventory is in "Inspect" mode
     [HarmonyPatch(typeof(UIElement_Inventory), "IsExitItemSelected")]
     [HarmonyPrefix]
-    private static bool BackOutOfABag(ref bool __result)
+    private static bool BackOutOfABagInInspectMode(ref bool __result)
     {
         if (ButtonPressed[Action.Back])
         {
             __result = true;
+            return false;
+        }
+
+        return true;
+    }
+    
+    // Closes inventory on "Back" action when Inventory is in "Use" mode
+    [HarmonyPatch(typeof(UIElement_Inventory), "GetSelectedItem")]
+    [HarmonyPrefix]
+    private static bool BackOutOfABagInUseMode(ref InventoryItem __result)
+    {
+        if (ButtonPressed[Action.Back])
+        {
+            __result = InteractHandler.Instance.GetItemByIndex(0);
             return false;
         }
 
