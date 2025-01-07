@@ -116,7 +116,7 @@ public class Plugin : BaseUnityPlugin
     // Deals with map opening / switching floors on a map
     [HarmonyPatch(typeof(InteractHandler), "OnUpdate")]
     [HarmonyPrefix]
-    private static bool HandleCustomInputInUpdateLoop(ref int ___m_nActiveDialog)
+    private static bool HandleCustomInputInUpdateLoop()
     {
         var isMapOpen = _currentFloorMapName != "";
         // Map was closed
@@ -125,8 +125,9 @@ public class Plugin : BaseUnityPlugin
             _currentFloorMapName = "";
             return true;
         }
-
-        if ((!isMapOpen && ___m_nActiveDialog != -1) || SGFW.GameLogic.LevelLogic.IsPuzzleViewActive() || SGFW.GameLogic.LevelLogic.IsPuzzleViewPending())
+        
+        if (SGFW.GameLogic.LevelLogic.IsPuzzleViewActive() || SGFW.GameLogic.LevelLogic.IsPuzzleViewPending() ||
+            (!isMapOpen && InteractHandler.Instance.GetActiveDialog() != null))
         {
             return true;
         }
@@ -172,7 +173,7 @@ public class Plugin : BaseUnityPlugin
         _currentFloorMapName = requestedFloorMap.name;
         return false;
     }
-    
+
     // This just makes OnUpdate for every puzzle return true, which in Lorelei terms means "close that, we're done"
     [HarmonyPatch(typeof(PuzzleView), "OnUpdate")]
     [HarmonyPostfix]
@@ -312,7 +313,7 @@ public class Plugin : BaseUnityPlugin
         ___m_hReactHandler.RequestEvents(selectedButton.hGameObject, rotationPreset, 0.0f, false, false);
         return false;
     }
-    
+
     // Checks which axis have animation keys and inverts them
     private static ReactPreset InvertRotationPreset(ReactPreset rotationPreset)
     {
