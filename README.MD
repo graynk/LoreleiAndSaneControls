@@ -8,10 +8,9 @@ More specifically, it makes the following changes:
 1. For simple (and most common) locks - padlocks, roman numeral locks, etc - the up 
 and down button rotate the dials, and the "interact" button confirms the decision
 2. It adds a new "Back" button (`B` on controllers and `Backspace` on keyboard) which lets you back out of puzzles and inventory screen
-3. It adds a new "Map" button (`Select` on controllers and `M` on keyboard), which shows a map of the current floor (provided you have unlocked it in-game). Use `LB/RB` or `Q/E` to switch between floors.
+3. It adds a new "Map" button (`Select` on controllers and `M` on keyboard), which shows a map of the current floor (provided you have unlocked it in-game). Use `LB/RB` or `Q/E` to switch between floors. The shortcut only works inside the mansion if you're in one of the rooms on the map.
 
-I didn't touch some of the more difficult locks (like the Red Maze Door), but I hope to revisit it and see if I can 
-figure out how to add additional bindings for the game to use. Maybe even a map shortcut? One can dream (most likely I'll get bored and won't do it though).
+I didn't touch some of the more difficult locks (like the Red Maze Door), but most of my own grips with the controls are solved now.
 
 # Mapping
 
