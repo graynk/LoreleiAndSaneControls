@@ -4,12 +4,19 @@
 
 This is a small mod that aims to somewhat improve the experience of navigating the numerous puzzles of The Letztes Jahr Hotel.
 
-More specifically, it makes it so that for simple (and most common) locks - padlocks, roman numeral locks, etc - the up 
-and down button rotate the dials, and the "interact" button confirms the decision. This also means that you can back out 
-of the puzzle without navigating to the padlock's shackle.
+More specifically, it makes the following changes:
+1. For simple (and most common) locks - padlocks, roman numeral locks, etc - the up 
+and down button rotate the dials, and the "interact" button confirms the decision
+2. It adds a new "Back" button (`B` on controllers and `Backspace` on keyboard) which lets you back out of puzzles and inventory screen
+3. It adds a new "Map" button (`Select` on controllers and `M` on keyboard), which shows a map of the current floor (provided you have unlocked it in-game). Use `LB/RB` or `Q/E` to switch between floors. The shortcut only works inside the mansion if you're in one of the rooms on the map.
 
-I didn't touch some of the more difficult locks (like the Red Maze Door), but I hope to revisit it and see if I can 
-figure out how to add additional bindings for the game to use. Maybe even a map shortcut? One can dream (most likely I'll get bored and won't do it though).
+I didn't touch some of the more difficult locks (like the Red Maze Door), but most of my own grips with the controls are solved now.
+The Back button also affects puzzles/inventory/map screens only, to preserve some of the original intent of clunky menu-ing.
+
+# Mapping
+
+![Gamepad](./docs/gamepad.jpg)
+![Keyboard](./docs/keyboard.jpg)
 
 # How to install
 
@@ -32,10 +39,20 @@ That means you have to do additional steps
 
 # How to build
 
+## Library
+
 1. Install [.NET SDK](https://dotnet.microsoft.com/en-us/download)
-2. Possibly install [.NET Framework SDK](https://dotnet.microsoft.com/en-us/download/dotnet-framework) as well? Can't be bothered to check, as you likely have it installed anyway
-3. Clone this repo
-4. Create a `lib` directory in the project
-5. Copy `Assembly-CSharp.dll` from `path\to\game\Lorelei and the Laser Eyes_Data\Managed` to `lib`
-6. Run `dotnet build --configuration Release`
-7. Copy resulting DLL from `LoreleiAndSaneControls\bin\Release\net46\` to `path\to\game\BepInEx\plugins` 
+2. Clone this repo
+3. Create a `lib` directory in the project
+4. Copy `Assembly-CSharp.dll` from `path\to\game\Lorelei and the Laser Eyes_Data\Managed` to `lib`
+5. Run `dotnet build --configuration Release`
+6. Copy resulting DLL from `LoreleiAndSaneControls\bin\Release\net46\` to `path\to\game\BepInEx\plugins`
+7. Copy `binds\globalgamemanagers.assets` to `path\to\game\Lorelei and the Laser Eyes_Data` OR follow the instruction to [import custom bindings](#custom-bindings) yourself 
+
+## Custom bindings
+
+1. Install [UABEA](https://github.com/nesrak1/UABEA)
+2. Open `path\to\game\Lorelei and the Laser Eyes_Data\globalgamemanagers.assets` in the app
+3. Find `InputManager` asset of type `MonoBehaviour` (NOT `MonoScript`)
+4. Press `Import dump`, switch type from .txt to .json and select `InputManager-globalgamemanagers.assets-1624.json`
+5. Save
