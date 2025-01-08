@@ -140,7 +140,7 @@ public class Plugin : BaseUnityPlugin
         // Back button takes priority over map button
         // In case of inventory this _also_ depends on patch making IsExitItemSelected return true and GetSelectedItem return exit item
         // And in case of ByteSeyes it makes it press the exit node also.
-        if (ButtonPressed[Action.Back] && InteractHandler.Instance.GetActiveDialog() != null)
+        if (ButtonPressed[Action.Back] && !isMapOpen && InteractHandler.Instance.GetActiveDialog() != null)
         {
             if (InteractHandler.Instance.IsActiveDialogComputer() || ConsoleLogic.Instance.IsRunning()) return true;
             if (ContemplateLogic.Instance.IsMainUIActive()) ___m_nActiveDialogSelectedOption = 0;
