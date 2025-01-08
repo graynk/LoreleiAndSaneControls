@@ -129,12 +129,6 @@ public class Plugin : BaseUnityPlugin
             _currentlyOpenMapName = "";
             return true;
         }
-        if (isMapOpen && ButtonPressed[Action.Back])
-        {
-            _currentlyOpenMapName = "";
-            InteractHandler.Instance.HideDialog();
-            return false;
-        }
         
         // Do nothing on puzzle views
         if (SGFW.GameLogic.LevelLogic.IsPuzzleViewActive() || SGFW.GameLogic.LevelLogic.IsPuzzleViewPending())
