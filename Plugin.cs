@@ -14,9 +14,12 @@ public class Plugin : BaseUnityPlugin
     private const string InputMethodName = "OnPuzzleViewSelectInput";
     private static readonly Dictionary<Action, bool> ButtonPressed = new();
     private static readonly Interact[] Maptubes = new Interact[5];
+    private static Interact _mazeMap;
+    private static Interact _forestMap;
     private static ManualLogSource _logger;
     private static Harmony _hi;
-    private static string _currentFloorMapName = "";
+    private static string _currentlyOpenMapName = "";
+    private static string _lastKnownMapName = "";
 
     private void Awake()
     {
@@ -50,7 +53,7 @@ public class Plugin : BaseUnityPlugin
     [HarmonyPostfix]
     private static void StealMaptubesRefsIfAbsent()
     {
-        var hasNullRefs = false;
+        var hasNullRefs = _mazeMap == null || _forestMap == null;
         foreach (Interact maptube in Maptubes)
             if (maptube == null)
             {
@@ -65,7 +68,6 @@ public class Plugin : BaseUnityPlugin
         var found = 0;
         foreach (var interact in allInteractsInGame)
         {
-            // also pfMazeposter01 and pfPixel_Forest_Sign01
             switch (interact.name)
             {
                 case "Maptube_Cellar_Interact":
@@ -83,13 +85,15 @@ public class Plugin : BaseUnityPlugin
                 case "Maptube_Loft_Interact":
                     Maptubes[4] = interact;
                     break;
+                case "pfMazeposter01":
+                    _mazeMap = interact;
+                    break;
+                case "Sign_Trail": 
+                    _forestMap = interact; 
+                    break;
                 default:
                     continue;
             }
-
-            found++;
-
-            if (found == Maptubes.Length) break;
         }
     }
 
@@ -116,28 +120,42 @@ public class Plugin : BaseUnityPlugin
     // Deals with map opening / switching floors on a map. Also closes the inventory
     [HarmonyPatch(typeof(InteractHandler), "OnUpdate")]
     [HarmonyPrefix]
-    private static bool HandleCustomInputInUpdateLoop(ref bool bInteractButton)
+    private static bool HandleCustomInputInUpdateLoop(ref int ___m_nActiveDialogSelectedOption, ref bool bInteractButton)
     {
-        var activeDialog = InteractHandler.Instance.GetActiveDialog();
-        // Closes the inventory. This _also_ makes IsExitItemSelected return true and GetSelectedItem return exit item.
-        if (ButtonPressed[Action.Back] && activeDialog != null && (activeDialog.sDesc.Contains("Inventory") || activeDialog.sDesc.Contains("Map")))
-        {
-            bInteractButton = true;
-            return true;
-        }
-        var isMapOpen = _currentFloorMapName != "";
+        var isMapOpen = _currentlyOpenMapName != "";
         // Map was closed
         if (isMapOpen && ButtonPressed[Action.Interact])
         {
-            _currentFloorMapName = "";
+            _currentlyOpenMapName = "";
             return true;
         }
+        if (isMapOpen && ButtonPressed[Action.Back])
+        {
+            _currentlyOpenMapName = "";
+            InteractHandler.Instance.HideDialog();
+            return false;
+        }
         
-        if (SGFW.GameLogic.LevelLogic.IsPuzzleViewActive() || SGFW.GameLogic.LevelLogic.IsPuzzleViewPending() ||
-            (!isMapOpen && InteractHandler.Instance.GetActiveDialog() != null))
+        // Do nothing on puzzle views
+        if (SGFW.GameLogic.LevelLogic.IsPuzzleViewActive() || SGFW.GameLogic.LevelLogic.IsPuzzleViewPending())
         {
             return true;
         }
+        
+        // Makes back button behave like a regular interact button to back out of regular interacts
+        // Back button takes priority over map button
+        // In case of inventory this _also_ depends on patch making IsExitItemSelected return true and GetSelectedItem return exit item
+        // And in case of ByteSeyes it makes it press the exit node also.
+        if (ButtonPressed[Action.Back] && InteractHandler.Instance.GetActiveDialog() != null)
+        {
+            if (InteractHandler.Instance.IsActiveDialogComputer() || ConsoleLogic.Instance.IsRunning()) return true;
+            if (ContemplateLogic.Instance.IsMainUIActive()) ___m_nActiveDialogSelectedOption = 0;
+            bInteractButton = true;
+            return true;
+        }
+
+        // Don't let map be open on active dialogs
+        if (!isMapOpen && InteractHandler.Instance.GetActiveDialog() != null) return true;
 
         var mapButtonPressed = ButtonPressed[Action.Map];
         var prevButtonPressed = ButtonPressed[Action.Prev];
@@ -151,19 +169,34 @@ public class Plugin : BaseUnityPlugin
             _logger.LogInfo("room instance is null");
             return true;
         }
+        
+        StealMaptubesRefsIfAbsent();
 
-        var success = room.mapLink.GetMapAndRoomInstance(out FuzzyMap mapRef, out var _);
-        if (!success || mapRef == null)
+        _ = room.mapLink.GetMapAndRoomInstance(out FuzzyMap mapRef, out _);
+        if (mapRef == null)
         {
-            _logger.LogInfo("couldn't get map instance from room instance");
-            return true;
+            switch (room.roomName)
+            {
+                case "SGT_G_R_REDMAZE_NAME" or "SGT_COMMON_S_ROOM_QUIZ_CLUB":
+                    InteractHandler.Instance.ShowDialog(_mazeMap, "", false);
+                    return false;
+                case "SGT_G_R_FOREST_NAME":
+                    InteractHandler.Instance.ShowDialog(_forestMap, "", false);
+                    return false;
+            }
+
+            if (_lastKnownMapName == "")
+            {
+                _lastKnownMapName = "Maptube_Floor01_Interact";
+            }
+            _currentlyOpenMapName = _lastKnownMapName;
         }
 
-        var currentFloor = _currentFloorMapName == ""
+        var currentFloor = _currentlyOpenMapName == ""
             ? $"Maptube_{mapRef.name.Substring("pfHotelmap".Length)}_Interact"
-            : _currentFloorMapName;
+            : _currentlyOpenMapName;
 
-        StealMaptubesRefsIfAbsent();
+        
         var offset = 0;
         if (prevButtonPressed)
             offset = -1;
@@ -185,7 +218,8 @@ public class Plugin : BaseUnityPlugin
         }
 
         InteractHandler.Instance.ShowDialog(requestedFloorMap, "", false);
-        _currentFloorMapName = requestedFloorMap.name;
+        _currentlyOpenMapName = requestedFloorMap.name;
+        _lastKnownMapName = requestedFloorMap.name;
         return false;
     }
 
@@ -228,6 +262,48 @@ public class Plugin : BaseUnityPlugin
 
         return true;
     }
+    
+    // Closes ByteSeyes on "Back" action
+    [HarmonyPatch(typeof(MiniGameOS), "OnUpdate")]
+    [HarmonyPrefix]
+    private static bool BackOutOfByteSeyesState(ref ByteSeyesState ___m_nState)
+    {
+        if (___m_nState == ByteSeyesState.Menu && ButtonPressed[Action.Back])
+        {
+            ___m_nState = ByteSeyesState.RunMenuItem;
+            return true;
+        }
+
+        return true;
+    }
+    
+    // Closes ByteSeyes on "Back" action
+    [HarmonyPatch(typeof(MiniGameOS), "ExecuteMenuItem")]
+    [HarmonyPrefix]
+    private static bool BackOutOfByteSeyesUI(ref MiniGameOS.MenuItems nMenuItem)
+    {
+        if (ButtonPressed[Action.Back])
+        {
+            nMenuItem = MiniGameOS.MenuItems.PowerOff;
+            return true;
+        }
+
+        return true;
+    }
+    
+    // Closes the list of Photographic memories on "Back" action
+    [HarmonyPatch(typeof(UIElement_PhotographicMemory), "OnUpdate")]
+    [HarmonyPrefix]
+    private static bool BackOutOfMemories(ref UIElement_PhotographicMemory.MemoryAction __result)
+    {
+        if (ButtonPressed[Action.Back])
+        {
+            __result = UIElement_PhotographicMemory.MemoryAction.Back;
+            return false;
+        }
+
+        return true;
+    }
 
     // For padlocks converts what would normally be an "interact" action (e.g. on a dial) to a "check solution" action
     [HarmonyPatch(typeof(PadLockLogic), ConfirmMethodName)]
@@ -235,6 +311,8 @@ public class Plugin : BaseUnityPlugin
     [HarmonyPatch(typeof(LetterLockLogic), ConfirmMethodName)]
     [HarmonyPatch(typeof(RomanPadLockLogic), ConfirmMethodName)]
     [HarmonyPatch(typeof(MapTubeLogic), ConfirmMethodName)]
+    [HarmonyPatch(typeof(VerticalPadLockLogic), ConfirmMethodName)]
+    [HarmonyPatch(typeof(VerticalRotatedPadLockLogic), ConfirmMethodName)]
     [HarmonyPrefix]
     private static bool AlwaysPushConfirmButton(ref ConfirmButtonDuplicate ___m_hConfirmButton)
     {
@@ -289,8 +367,10 @@ public class Plugin : BaseUnityPlugin
         return false;
     }
 
-    // For map tubes (and later maybe other locks) convert LEFT/RIGHT action into "rotate the dial" action
+    // For vertical locks convert LEFT/RIGHT action into "rotate the dial" action
     [HarmonyPatch(typeof(MapTubeLogic), InputMethodName)]
+    [HarmonyPatch(typeof(VerticalPadLockLogic), InputMethodName)]
+    [HarmonyPatch(typeof(VerticalRotatedPadLockLogic), InputMethodName)]
     [HarmonyPrefix]
     private static bool TreatHorizontalDirectionAsInput(
         ref ReactPreset ___wheelSpinPreset,
@@ -423,5 +503,14 @@ public class Plugin : BaseUnityPlugin
         Map,
         Back,
         Interact
+    }
+    
+    private enum ByteSeyesState
+    {
+        Off,
+        Boot,
+        Menu,
+        RunMenuItem,
+        RunMenuItemComplete,
     }
 }
