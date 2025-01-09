@@ -340,7 +340,7 @@ public class Plugin : BaseUnityPlugin
             ref ___m_bSnapWheelRotation,
             ___m_hWheelButtons,
             ___m_hReactHandler,
-            nInput,
+            ref nInput,
             SGMenuNavigator.INPUTDIR.UP,
             SGMenuNavigator.INPUTDIR.DOWN,
             out int selectedButtonIndex,
@@ -380,7 +380,7 @@ public class Plugin : BaseUnityPlugin
             ref ___m_bSnapWheelRotation,
             ___m_hWheelButtons,
             ___m_hReactHandler,
-            nInput,
+            ref nInput,
             SGMenuNavigator.INPUTDIR.LEFT,
             SGMenuNavigator.INPUTDIR.RIGHT,
             out _,
@@ -393,7 +393,7 @@ public class Plugin : BaseUnityPlugin
         ref bool ___m_bSnapWheelRotation,
         List<WheelButton> ___m_hWheelButtons,
         ReactHandler ___m_hReactHandler,
-        SGMenuNavigator.INPUTDIR nInput,
+        ref SGMenuNavigator.INPUTDIR nInput,
         SGMenuNavigator.INPUTDIR incDirection,
         SGMenuNavigator.INPUTDIR decDirection,
         out int selectedButtonIndex,
@@ -412,23 +412,24 @@ public class Plugin : BaseUnityPlugin
             return true;
         }
 
+        selectedButtonIndex =
+            ___m_hWheelButtons.FindIndex(wheelButton => wheelButton.hSelectableObject == hSelection);
+        var selectedButton = ___m_hWheelButtons[selectedButtonIndex];
+        if (!___m_hReactHandler.IsEventsFinished(selectedButton.hGameObject))
+        {
+            return false;
+        }
+        
         // If the input counts down - invert the rotation animation
         if (nInput == decDirection)
         {
             rotationPreset = InvertRotationPreset(rotationPreset);
         }
 
-        selectedButtonIndex =
-            ___m_hWheelButtons.FindIndex(wheelButton => wheelButton.hSelectableObject == hSelection);
-        var selectedButton = ___m_hWheelButtons[selectedButtonIndex];
-        if (!___m_hReactHandler.IsEventsFinished(selectedButton.hGameObject))
-        {
-            return true;
-        }
-
         // If the input counts up or down and all previous events have finished - rotate the wheel
         ___m_bSnapWheelRotation = true;
         ___m_hReactHandler.RequestEvents(selectedButton.hGameObject, rotationPreset, 0.0f, false, false);
+        nInput = SGMenuNavigator.INPUTDIR.NONE;
         return false;
     }
 
