@@ -1,6 +1,6 @@
 ﻿# Lorelei and the Sane Controls
 
-![Demo](https://graynk.space/lorelei.gif)
+https://github.com/user-attachments/assets/bec9f586-393c-4a85-9cc8-683cff3b5dce
 
 This is a small mod for [Lorelei and the Laser Eyes](https://store.steampowered.com/app/2008920/Lorelei_and_the_Laser_Eyes/) that aims to somewhat improve the experience of navigating the numerous puzzles of The Letztes Jahr Hotel.
 
