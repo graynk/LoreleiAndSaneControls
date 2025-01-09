@@ -8,10 +8,10 @@ More specifically, it makes the following changes:
 1. For simple (and most common) locks - padlocks, roman numeral locks, etc - the up 
 and down button rotate the dials, and the "interact" button confirms the decision
 2. It adds a new "Back" button (`B` on controllers and `Backspace` on keyboard) which lets you back out of puzzles and inventory screen
-3. It adds a new "Map" button (`Select` on controllers and `M` on keyboard), which shows a map of the current floor (provided you have unlocked it in-game). Use `LB/RB` or `Q/E` to switch between floors. The shortcut only works inside the mansion if you're in one of the rooms on the map.
+3. It adds a new "Map" button (`Select` on controllers and `M` on keyboard), which shows a map of the current floor (provided you have unlocked it in-game). Use `LB/RB` or `Q/E` to switch between floors. The shortcut also works in the maze and in the forest.
 
-I didn't touch some of the more difficult locks (like the Red Maze Door), but most of my own grips with the controls are solved now.
-The Back button also affects puzzles/inventory/map screens only, to preserve some of the original intent of clunky menu-ing.
+I didn't touch some of the more difficult locks (like the Red Maze Door), but most of my own gripes with the controls are solved now.
+The Back button works in _most_ places, but not _everywhere_ (e.g. multiple choice dialog and free text input forms). Adding support for it involved a lot of ugly hacks and I've covered the most common/annoying screens.
 
 # Mapping
 
@@ -56,3 +56,13 @@ That means you have to do additional steps
 3. Find `InputManager` asset of type `MonoBehaviour` (NOT `MonoScript`)
 4. Press `Import dump`, switch type from .txt to .json and select `InputManager-globalgamemanagers.assets-1624.json`
 5. Save
+
+# How to uninstall
+
+1. Delete `BepInEx` folder and `winhttp.dll` from the game's root directory.
+2. Verify the game's contents in Steam to restore original bindings
+
+# Known problems
+
+* The Map shortcut shows the map of the Hotel inside the Laser-1 prototypes, although it probably shouldn't. Not critical, not going to spend much time looking into it
+* The Back button doesn't close the map screen opened by the Map shortcut. I've spent a _lot_ of time tracking this, and still couldn't figure out why it wasn't working - but you can still close it with the regular Interact button
