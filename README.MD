@@ -2,7 +2,7 @@
 
 ![Demo](https://graynk.space/lorelei.gif)
 
-This is a small mod that aims to somewhat improve the experience of navigating the numerous puzzles of The Letztes Jahr Hotel.
+This is a small mod for [Lorelei and the Laser Eyes](https://store.steampowered.com/app/2008920/Lorelei_and_the_Laser_Eyes/) that aims to somewhat improve the experience of navigating the numerous puzzles of The Letztes Jahr Hotel.
 
 More specifically, it makes the following changes:
 1. For simple (and most common) locks - padlocks, roman numeral locks, etc - the up 
