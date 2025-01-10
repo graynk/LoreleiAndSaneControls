@@ -64,5 +64,5 @@ That means you have to do additional steps
 
 # Known problems
 
-* The Map shortcut shows the map of the Hotel inside the Laser-1 prototypes, although it probably shouldn't. Not critical, not going to spend much time looking into it
+* The Map shortcut shows the map of the Hotel inside the Laser-1 prototypes and during the final sequence of the game, although it probably shouldn't. Not critical, not going to spend much time looking into it
 * The Back button doesn't close the map screen opened by the Map shortcut. I've spent a _lot_ of time tracking this, and still couldn't figure out why it wasn't working - but you can still close it with the regular Interact button
