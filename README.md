@@ -22,7 +22,7 @@ The Back button works in _most_ places, but not _everywhere_ (e.g. multiple choi
 
 ## On Windows
 
-Download the zip archive from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases) page and extract it to the game's root directory (in Steam it's Right Mouse Button - Manage - Browse local files).
+Download the zip archive from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases) page and extract it to the game's root directory (in Steam it's Right Mouse Button - Manage - Browse local files). Overwrite the `globalgamemanagers.assets` when prompted. Done!
 
 ## On Steam Deck
 
@@ -37,7 +37,7 @@ That means you have to do additional steps
 6. Run winecfg
 7. In the Libraries tab add a new override for `winhttp.dll` and click OK
 
-# How to build
+# How to build it yourself
 
 ## Library
 
