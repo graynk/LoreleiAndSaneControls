@@ -301,7 +301,6 @@ public class Plugin : BaseUnityPlugin
 
     // For padlocks converts what would normally be an "interact" action (e.g. on a dial) to a "check solution" action
     [HarmonyPatch(typeof(PadLockLogic), ConfirmMethodName)]
-    [HarmonyPatch(typeof(KeyCabinetPadLock), ConfirmMethodName)]
     [HarmonyPatch(typeof(LetterLockLogic), ConfirmMethodName)]
     [HarmonyPatch(typeof(RomanPadLockLogic), ConfirmMethodName)]
     [HarmonyPatch(typeof(MapTubeLogic), ConfirmMethodName)]
@@ -316,7 +315,6 @@ public class Plugin : BaseUnityPlugin
 
     // For padlocks turn UP/DOWN actions into "rotate the dial" action
     [HarmonyPatch(typeof(PadLockLogic), InputMethodName)]
-    [HarmonyPatch(typeof(KeyCabinetPadLock), InputMethodName)]
     [HarmonyPatch(typeof(LetterLockLogic), InputMethodName)]
     [HarmonyPatch(typeof(RomanPadLockLogic), InputMethodName)]
     [HarmonyPrefix]
