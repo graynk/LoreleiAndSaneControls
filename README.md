@@ -22,7 +22,7 @@ The Back button works in _most_ places, but not _everywhere_ (e.g. multiple choi
 
 ## On Windows
 
-Download the zip archive from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases) page and extract it to the game's root directory (in Steam it's Right Mouse Button - Manage - Browse local files). Overwrite the `globalgamemanagers.assets` when prompted. Done!
+Download the `Lorelei.zip` archive from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases) page and extract it to the game's root directory (in Steam it's Right Mouse Button - Manage - Browse local files). Overwrite the `globalgamemanagers.assets` when prompted. Done!
 
 ## On Steam Deck
 
@@ -30,12 +30,20 @@ The mod uses [BepInEx](https://docs.bepinex.dev/index.html) to inject the custom
 That means you have to do additional steps
 
 1. Switch to Desktop Mode
-2. Download the zip archive from Releases page and extract it to the game's root directory
-3. Install protontricks via Discover app and launch it
-4. Choose Lorelei and the Laser Eyes
-5. Select the default wine prefix
-6. Run winecfg
-7. In the Libraries tab add a new override for `winhttp.dll` and click OK
+2. Download the `Lorelei.zip` archive from Releases page and extract it to the game's root directory, overwrite when prompted
+3. Right click on the game in Steam -> Properties -> Launch options -> Set it to `WINEDLLOVERRIDES="winhttp=n,b" %command%`
+
+## With latest BepInEx
+
+`Lorelei.zip` already contains BepInEx in it and is meant for simple and quick installation. However, I can't constantly keep checking if everything still functions correctly (maybe some Windows or some Lorelei update will come out and break the injection, or maybe there are other mods you want to use, who knows).
+
+If that's the case - you can manually install the latest BepInEx version and then my mod on top of it.
+
+1. Download latest `BepInEx_win_x64` from [BepInEx releases page](https://github.com/BepInEx/BepInEx/releases)
+2. Extract it into game's root directory
+3. Launch the game once and close it
+4. Download `Lorelei_minimal.zip` from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases)
+5. Follow instructions above for Windows / Steam Deck (except use `Lorelei_minimal.zip` archive instead of the full one, obviously)
 
 # How to build it yourself
 
