@@ -1,0 +1,50 @@
+{
+  "$schema": "lorelei-control-scheme-patch/v1",
+  "description": "Patches the control scheme to support new actions",
+  "actionCategoryId": 0,
+  "actions": [
+    {
+      "id": 95,
+      "name": "Map",
+      "keyboard": { "key": "M", "keyCode": 109 },
+      "joystick": { "element": "View / Select", "elementIdentifierId": 14 }
+    },
+    {
+      "id": 96,
+      "name": "Back",
+      "keyboard": { "key": "Backspace", "keyCode": 8 },
+      "joystick": { "element": "B / Circle", "elementIdentifierId": 5 }
+    },
+    {
+      "id": 97,
+      "name": "Prev",
+      "keyboard": { "key": "Q", "keyCode": 113 },
+      "joystick": { "element": "LB / L1", "elementIdentifierId": 10 }
+    },
+    {
+      "id": 98,
+      "name": "Next",
+      "keyboard": { "key": "E", "keyCode": 101 },
+      "joystick": { "element": "RB / R1", "elementIdentifierId": 12 }
+    }
+  ],
+  "joystickMap": {
+    "match": {
+      "categoryId": 0,
+      "layoutId": 0,
+      "hardwareGuid": "83b427e4-086f-47f3-bb06-be266abd1ca5"
+    },
+    "remove": [
+      { "actionId": 24, "action": "Interact", "elementIdentifierId": 5 },
+      { "actionId": 24, "action": "Interact", "elementIdentifierId": 10 },
+      { "actionId": 24, "action": "Interact", "elementIdentifierId": 12 },
+      { "actionId": 78, "action": "Dialog_Confirm", "elementIdentifierId": 5 },
+      { "actionId": 78, "action": "Dialog_Confirm", "elementIdentifierId": 10 },
+      { "actionId": 78, "action": "Dialog_Confirm", "elementIdentifierId": 12 },
+      { "actionId": 85, "action": "Menu", "elementIdentifierId": 14 }
+    ]
+  },
+  "keyboardMap": {
+    "match": { "categoryId": 0, "layoutId": 0 }
+  }
+}

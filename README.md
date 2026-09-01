@@ -22,16 +22,20 @@ The Back button works in _most_ places, but not _everywhere_ (e.g. multiple choi
 
 ## On Windows
 
-Download the `Lorelei.zip` archive from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases) page and extract it to the game's root directory (in Steam it's Right Mouse Button - Manage - Browse local files). Overwrite the `globalgamemanagers.assets` when prompted. Done!
+Download `Lorelei.zip` and `control_scheme_patcher.exe` from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases). Put both in the game's root directory, run the patcher and extract the zip file.
 
-## On Steam Deck
+## On Steam Deck / Steam OS / Linux in general
 
 The mod uses [BepInEx](https://docs.bepinex.dev/index.html) to inject the custom code, which in turn [relies](https://docs.bepinex.dev/articles/advanced/proton_wine.html) on `winhttp.dll` proxy DLL.
 That means you have to do additional steps
 
 1. Switch to Desktop Mode
-2. Download the `Lorelei.zip` archive from Releases page and extract it to the game's root directory, overwrite when prompted
-3. Right click on the game in Steam -> Properties -> Launch options -> Set it to `WINEDLLOVERRIDES="winhttp=n,b" %command%`
+2. Download `Lorelei.zip` and `control_scheme_patcher-linux`, put both in the game's root directory, run the patcher and extract the zip file.
+3. Right click the game in Steam, open Properties, and set Launch Options to `WINEDLLOVERRIDES="winhttp=n,b" %command%`
+
+## On Apple Silicon macOS
+
+Frankly, I don't own a MacBook, so I don't know what's in vogue these days for playing Windows games. I do provide the native controls patcher just in case though.
 
 ## With latest BepInEx
 
@@ -43,32 +47,55 @@ If that's the case - you can manually install the latest BepInEx version and the
 2. Extract it into game's root directory
 3. Launch the game once and close it
 4. Download `Lorelei_minimal.zip` from [Releases](https://github.com/graynk/LoreleiAndSaneControls/releases)
-5. Follow instructions above for Windows / Steam Deck (except use `Lorelei_minimal.zip` archive instead of the full one, obviously)
+5. Follow the instructions above for platform-specfic instructions (i.e. `control_scheme_patcher` and `WINEDLLOVERRIDES`).
+
+## Custom stuff
+
+The mod-specific bindings are embedded in the `control_scheme_patcher` already, but you can produce your own custom bindings (see [control_scheme_patch.json](./Patcher/Resources/control_scheme_patch.json) for an example) and apply them like this:
+
+```text
+control_scheme_patcher --patch my_bindings.json
+```
+
+Additionally, `control_scheme_patcher extract` extracts the full control scheme without modifying the game files.
 
 # How to build it yourself
 
-## Library
+Install [.NET SDK](https://dotnet.microsoft.com/en-us/download).
 
-1. Install [.NET SDK](https://dotnet.microsoft.com/en-us/download)
-2. Clone this repo
-3. Create a `lib` directory in the project
-4. Copy `Assembly-CSharp.dll` from `path\to\game\Lorelei and the Laser Eyes_Data\Managed` to `lib`
-5. Run `dotnet build --configuration Release`
-6. Copy resulting DLL from `LoreleiAndSaneControls\bin\Release\net46\` to `path\to\game\BepInEx\plugins`
-7. Copy `binds\globalgamemanagers.assets` to `path\to\game\Lorelei and the Laser Eyes_Data` OR follow the instruction to [import custom bindings](#custom-bindings) yourself 
+## Mod DLL
 
-## Custom bindings
+1. Copy `Assembly-CSharp.dll` and `Rewired_Core.dll` from the game's `Lorelei and the Laser Eyes_Data/Managed` directory to `lib`.
+2. Build the plugin:
 
-1. Install [UABEA](https://github.com/nesrak1/UABEA)
-2. Open `path\to\game\Lorelei and the Laser Eyes_Data\globalgamemanagers.assets` in the app
-3. Find `InputManager` asset of type `MonoBehaviour` (NOT `MonoScript`)
-4. Press `Import dump`, switch type from .txt to .json and select `InputManager-globalgamemanagers.assets-1624.json`
-5. Save
+   ```bash
+   dotnet build --configuration Release --framework net46
+   ```
+
+3. Build the CLI:
+
+   ```bash
+   dotnet publish --configuration Release --framework net8.0
+   ```
+
+4. Copy `bin/Release/net46/LoreleiAndSaneControls.dll` to the game's `BepInEx/plugins` directory.
+5. Copy `control_scheme_patcher` to the game's root folder and run it
+
+## Tests
+
+The tests require these local, .gitignored fixtures:
+
+1. Copy `globalgamemanagers.assets` to `binds/globalgamemanagers_orig.assets`.
+2. Copy `Assembly-CSharp.dll` and `Rewired_Core.dll` from the game's `Managed` directory to `lib`.
+3. Put the patcher in the game root and run `control_scheme_patcher extract`.
+4. Copy the extracted JSON to `binds/InputManager-globalgamemanagers.assets-orig.json`.
+
+Run them with `dotnet test ControlSchemePatcher.Tests`.
 
 # How to uninstall
 
 1. Delete `BepInEx` folder and `winhttp.dll` from the game's root directory.
-2. Verify the game's contents in Steam to restore original bindings
+2. Verify the game's contents in Steam to restore original bindings (or use the .lorelei-backup file created by the patcher)
 
 # Known problems
 

@@ -1,5 +1,11 @@
 ﻿bin/
 obj/
 .idea/
-lib/
+.junie/
 Folder.DotSettings.user
+binds/*.assets
+binds/InputManager-globalgamemanagers.assets-orig.json
+artifacts/
+Lorelei.zip
+Lorelei_minimal.zip
+packaging/

@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <AssemblyName>ControlSchemePatcher.Tests</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../LoreleiAndSaneControls.csproj">
+      <SetTargetFramework>TargetFramework=net8.0</SetTargetFramework>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../Patcher/Resources/control_scheme_patch.json"
+          Link="Reference/control_scheme_patch.json"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../binds/InputManager-globalgamemanagers.assets-orig.json"
+          Condition="Exists('../binds/InputManager-globalgamemanagers.assets-orig.json')"
+          Link="Reference/InputManager-original.json"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../binds/InputManager-globalgamemanagers.assets.json"
+          Link="Reference/InputManager-modified.json"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../binds/globalgamemanagers_orig.assets"
+          Condition="Exists('../binds/globalgamemanagers_orig.assets')"
+          Link="Reference/globalgamemanagers.assets"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../lib/Assembly-CSharp.dll"
+          Condition="Exists('../lib/Assembly-CSharp.dll')"
+          Link="Reference/Managed/Assembly-CSharp.dll"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../lib/Rewired_Core.dll"
+          Condition="Exists('../lib/Rewired_Core.dll')"
+          Link="Reference/Managed/Rewired_Core.dll"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(NuGetPackageRoot)unityengine.modules/2021.3.42/lib/net35/UnityEngine.dll"
+          Link="Reference/Managed/UnityEngine.dll"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(NuGetPackageRoot)unityengine.modules/2021.3.42/lib/net35/UnityEngine.CoreModule.dll"
+          Link="Reference/Managed/%(Filename)%(Extension)"
+          CopyToOutputDirectory="PreserveNewest" />
+    <None Include="$(NuGetPackageRoot)microsoft.netframework.referenceassemblies.net46/1.0.3/build/.NETFramework/v4.6/mscorlib.dll"
+          Link="Reference/Managed/mscorlib.dll"
+          CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

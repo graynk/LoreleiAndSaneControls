@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
-    <AssemblyName>LoreleiAndSaneControls</AssemblyName>
+    <TargetFrameworks>net46;net8.0</TargetFrameworks>
     <Product>Lorelei and the Sane Controls</Product>
     <Version>1.0.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -13,23 +12,53 @@
       https://nuget.samboy.dev/v3/index.json
     </RestoreAdditionalProjectSources>
     <RootNamespace>LoreleiAndSaneControls</RootNamespace>
-    
+
   </PropertyGroup>
 
-  <ItemGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net46'">
+    <OutputType>Library</OutputType>
+    <AssemblyName>LoreleiAndSaneControls</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <OutputType>Exe</OutputType>
+    <AssemblyName>control_scheme_patcher</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <IsAotCompatible>true</IsAotCompatible>
+    <PublishTrimmed>true</PublishTrimmed>
+    <SelfContained Condition="'$(RuntimeIdentifier)' != 'linux-x64'">true</SelfContained>
+    <PublishSingleFile Condition="'$(RuntimeIdentifier)' != 'linux-x64'">true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract Condition="'$(RuntimeIdentifier)' != 'linux-x64'">true</IncludeNativeLibrariesForSelfExtract>
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <PublishAot Condition="'$(RuntimeIdentifier)' == 'linux-x64'">true</PublishAot>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Core" Version="5.*" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
     <PackageReference Include="UnityEngine.Modules" Version="2021.3.42" IncludeAssets="compile" />
-  </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>lib\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
     </Reference>
+    <Compile Remove="Patcher/**/*.cs" />
+    <Compile Remove="ControlSchemePatcher.Tests/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <PackageReference Include="AssetsTools.NET" Version="3.0.5" />
+    <PackageReference Include="AssetsTools.NET.MonoCecil" Version="3.0.4" />
+    <Compile Remove="Plugin.cs" />
+    <Compile Remove="ControlSchemePatcher.Tests/**/*.cs" />
+    <EmbeddedResource Include="Patcher/Resources/classdata.tpk" />
+    <EmbeddedResource Include="Patcher/Resources/control_scheme_patch.json" />
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>ControlSchemePatcher.Tests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 </Project>
